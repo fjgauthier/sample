@@ -1,0 +1,8 @@
+sample.egg-info
+.git
+.tox
+
+*.pyc
+*.~
+*.bak
+
