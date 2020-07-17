@@ -5,6 +5,7 @@ import sqlite3
 
 import numpy
 
+
 class Select:
     shapes_sql = """
         SELECT s.shape_id, s.shape_name, p.x, p.y, p.z
@@ -85,7 +86,7 @@ class Sample:
         for table_create_statement in Select.create_database_sql:
             try:
                 self.connection.execute(table_create_statement)
-            except sqlite3.Error as e:
+            except sqlite3.Error:
                 print(f"error with statement {table_create_statement}")
                 raise
         self.connection.commit()
