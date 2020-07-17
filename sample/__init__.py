@@ -1,1 +1,1 @@
-from .sample import Sample, Select, Shape  # noqa: F401
+from .sample import Sample, SampleError, Select, Shape  # noqa: F401
