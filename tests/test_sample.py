@@ -2,7 +2,7 @@ import numpy
 
 import pytest
 
-from sample import Sample, Select
+from sample import Sample
 
 
 @pytest.fixture
