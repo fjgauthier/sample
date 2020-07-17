@@ -11,11 +11,10 @@ Code sample
 
 ## Quickstart
 
-To run the sample, execute the following:
+To test the sample, execute the following (for example):
 ```
-    $ mkvirtualenv -p `which python3.9` sample
-    $ # Alternatively: mkdir ~/sample; python3.9 -m venv ~/sample
-    $ pip install -e .
-    $ code_sample
-    $ rm -fr ~/sample  # if alternative was used
+    $ tox -e py39,pep8
 ```
+Sample can run the tests on python versions 3.7, 3.8 and/or 3.9 (py37, py38 and py39 respectively).
+
+The pep8 tox environment will test code style enforcement.
