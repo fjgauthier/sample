@@ -1,0 +1,6 @@
+pytest
+flake8
+flake8-import-order
+flake8-bandit
+flake8-blind-except
+flake8-builtins
