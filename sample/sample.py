@@ -54,6 +54,10 @@ def dict_factory(cursor, row):
     return d
 
 
+class SampleError(Exception):
+    pass
+
+
 class Shape:
     def __init__(self, shape_id, shape_name):
         self.shape_id = shape_id
@@ -61,7 +65,15 @@ class Shape:
         self.points = []
 
     def add_point(self, x, y, z):
-        self.points.append(numpy.array([x, y, z]))
+        self.points.append([x, y, z])
+
+    def centroid(self):
+        if not len(self.points):
+            raise ZeroDivisionError("Unable to compute with 0 data")
+
+        array = numpy.array(self.points)
+        computed_centroid = numpy.sum(array, axis=0) / len(self.points)
+        return computed_centroid
 
 
 class Sample:
@@ -101,3 +113,8 @@ class Sample:
         for shape_point in cursor:
             self.shapes.setdefault(shape_point['shape_id'], Shape(shape_point['shape_id'], shape_point['shape_name']))\
                 .add_point(shape_point['x'], shape_point['y'], shape_point['z'])
+
+    def add_shape(self, shape):
+        if not isinstance(shape, Shape):
+            raise SampleError("Sample can only use Shapes")
+        self.shapes[shape.shape_id] = shape
