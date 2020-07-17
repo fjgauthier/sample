@@ -2,6 +2,8 @@ import numpy
 
 import pytest
 
+from sample import Sample, Select
+
 
 @pytest.fixture
 def numbers():
@@ -10,4 +12,9 @@ def numbers():
 
 def test_simple(numbers):
     assert len(numbers) == 5
-    
+
+
+def test_empty_database():
+    test_sample = Sample(':memory:')
+    test_sample.create_empty_database()
+    assert len(test_sample) == 0

@@ -1,6 +1,9 @@
 sample.egg-info
 .git
 .tox
+.idea
+dist
+.eggs
 
 *.pyc
 *.~
