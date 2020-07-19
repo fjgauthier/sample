@@ -64,6 +64,9 @@ class Shape:
         self.shape_name = shape_name
         self.points = []
 
+    def __len__(self):
+        return len(self.points)
+
     def add_point(self, x, y, z):
         self.points.append([x, y, z])
 
@@ -105,12 +108,11 @@ class Sample:
 
     def load_database(self):
         self.connection.row_factory = dict_factory
-        cursor = self.connection.cursor()
-        cursor.execute(Select.shapes_sql)
+        self.connection.execute(Select.shapes_sql)
 
         # At this point empty shapes
         self.shapes.clear()
-        for shape_point in cursor:
+        for shape_point in self.connection.fetchall():
             self.shapes.setdefault(shape_point['shape_id'], Shape(shape_point['shape_id'], shape_point['shape_name']))\
                 .add_point(shape_point['x'], shape_point['y'], shape_point['z'])
 
