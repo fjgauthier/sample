@@ -20,7 +20,7 @@ setup(
     author_email='francisgauthier1@gmail.com    ',
     url='https://github.com/fjgauthier',
     install_requires=[
-        'numpy==1.19.0',
+        'numpy==1.22.0',
     ],
     extras_require={},
     license='New BSD',
